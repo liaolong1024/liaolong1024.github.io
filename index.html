@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-30 23:15:52" itemprop="dateModified" datetime="2022-03-30T23:15:52+08:00">2022-03-30</time>
+                <time title="修改时间：2022-03-30 23:22:11" itemprop="dateModified" datetime="2022-03-30T23:22:11+08:00">2022-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -223,18 +223,14 @@
 
       
           <h1 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h1><h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是认为每次访问共享资源时会发生冲突, 所以必须对每次数据操作加上锁, 以保证临界区的程序同一时间只能有一个线程在执行</p>
-<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>乐观锁又称为’无锁’, 总是假设对共享资源的访问没有冲突, 线程可以不停地执行, 一旦发生冲突, 乐观锁通常使用一种称为<code>CAS</code>的技术来保证线程执行的安全性</p>
-<p>乐观锁不会出现死锁的情况</p>
-<h2 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h2><p>乐观锁多用于<code>读多写少</code>的环境, 避免频繁加锁影响性能, 悲观锁多用于<code>写多读少</code>的环境, 避免频繁失败和重试影响性能</p>
-<h1 id="happens-before"><a href="#happens-before" class="headerlink" title="happens-before"></a>happens-before</h1><h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a>volatile</h1><h1 id="CAS"><a href="#CAS" class="headerlink" title="CAS"></a>CAS</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>CAS: Compare And Swap</p>
-<ul>
-<li>V: 要更新的变量</li>
-<li>E: 预期值</li>
-<li>N: 新值<br>判断V是否等于E,如果相等, 将V的值设置为N, 如果不等, 说明已经有其他线程更新了V, 则当前线程放弃此次更新, 什么都不做</li>
-</ul>
-<h2 id="Q-amp-A"><a href="#Q-amp-A" class="headerlink" title="Q&amp;A"></a>Q&amp;A</h2><h3 id="Q1"><a href="#Q1" class="headerlink" title="Q1"></a>Q1</h3><p>Q:是否存在这样一种情况: 当前线程在判断了E和V相等后, 当前线程正准备更新V的值, 此时另外一个线程更新了V的值,<br>A: 不会, 因为CAS是一种原子操作, 是一种系统原语, 是一条CPU的原子指令, 从CPU层面保证了它的原子性, 多个线程同时使用CAS操作一个变量时, 只有一个会胜出, 失败的线程不会被挂起, 并且允许再次尝试, 也允许失败的线程放弃操作</p>
-<h1 id="Unsafe类"><a href="#Unsafe类" class="headerlink" title="Unsafe类"></a>Unsafe类</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://redspider.gitbook.io/concurrent/di-er-pian-yuan-li-pian/10">CAS与原子操作</a></p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/29/AtomicInteger/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -602,7 +598,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-29 00:00:33" itemprop="dateModified" datetime="2022-03-29T00:00:33+08:00">2022-03-29</time>
+                <time title="修改时间：2022-03-30 23:22:33" itemprop="dateModified" datetime="2022-03-30T23:22:33+08:00">2022-03-30</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -628,24 +624,15 @@
           <h1 id="UML类图"><a href="#UML类图" class="headerlink" title="UML类图"></a>UML类图</h1><p><img src="13A47C3B1114488EB270384589F20F8B" alt="image"></p>
 <h1 id="写入时复制策略"><a href="#写入时复制策略" class="headerlink" title="写入时复制策略"></a>写入时复制策略</h1><p>当有多个调用者同时请求一个资源数据时，某个调用者需要对数据进行修改，此时复制一个当前资源数据的副本给调用者修改</p>
 <ul>
-<li>并发场景下，进行写操作加锁， 进行读操作不加锁，读写分离</li>
-</ul>
-<h1 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h1><p>// 待写</p>
-<h1 id="普通集合的并发修改异常-如何在遍历时修改集合元素"><a href="#普通集合的并发修改异常-如何在遍历时修改集合元素" class="headerlink" title="普通集合的并发修改异常, 如何在遍历时修改集合元素?"></a>普通集合的并发修改异常, 如何在遍历时修改集合元素?</h1><ol>
-<li>modCount变量: 对集合进行写操作时, modCount++</li>
-<li>使用Iterator迭代器遍历集合时, expectedModCount会保存当前modCount的值, 如果<code>hasNext()</code>方法为true, <code>next()</code>方法会校验expectedModCount与modCount的值, 如果不相等, 抛出<code>ConcurrentModficationException</code></li>
-</ol>
-<h1 id="CopyOnWriteArrayList的特点"><a href="#CopyOnWriteArrayList的特点" class="headerlink" title="CopyOnWriteArrayList的特点"></a>CopyOnWriteArrayList的特点</h1><ul>
-<li>采用写入时复制策略, 读写分离, 读和写操作分别作用于不同的<code>List</code>容器</li>
-<li>写操作加锁, 读操作没有加锁, 适用于读多写少的应用场景</li>
-<li>由于读写分离, 遍历<code>CopyOnWriteArrayList</code>时不会抛出<code>ConcurrentModificationException</code> <a href="#%E9%81%8D%E5%8E%86copyonwritearraylist">遍历CopyOnWriteArrayList</a></li>
-<li>数据量大时, 由于写操作会拷贝数据, 内存会有较大的压力, 可能会引起频繁<code>Full GC</code></li>
-<li>如果在写操作时进行读取, 此时读取的数据是旧容器的数据</li>
-</ul>
-<h1 id="遍历CopyOnWriteArrayList"><a href="#遍历CopyOnWriteArrayList" class="headerlink" title="遍历CopyOnWriteArrayList"></a>遍历CopyOnWriteArrayList</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CopyOnWriteArrayList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        CopyOnWriteArrayList&lt;Integer&gt; copyOnWriteArrayList = <span class="keyword">new</span> <span class="title class_">CopyOnWriteArrayList</span>&lt;&gt;();</span><br><span class="line">        copyOnWriteArrayList.add(<span class="number">0</span>);</span><br><span class="line">        List&lt;Integer&gt; arrayList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        arrayList.add(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*不抛出并发修改异常*/</span></span><br><span class="line">            <span class="keyword">for</span> (Integer integer : copyOnWriteArrayList) &#123;</span><br><span class="line">                copyOnWriteArrayList.remove(integer);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*抛出并发修改异常*/</span></span><br><span class="line">            <span class="keyword">for</span> (Integer integer1 : arrayList) &#123;</span><br><span class="line">                arrayList.remove(integer1);</span><br><span class="line">                <span class="comment">//arrayList.add(1);</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*不抛出并发修改异常*/</span></span><br><span class="line">            <span class="keyword">for</span> (Integer integer1 : arrayList) &#123;</span><br><span class="line">                <span class="comment">// modCount = 0, expectedModCount = 0, cursor = 1, size = 1</span></span><br><span class="line">                arrayList.remove(integer1);</span><br><span class="line">                <span class="comment">// modCount = 1, expectedModCount = 0, cursor = 1, size = 0</span></span><br><span class="line">                arrayList.add(<span class="number">1</span>);</span><br><span class="line">                <span class="comment">// modCount = 2, expectedModCount = 0, cursor = 1, size = 1</span></span><br><span class="line"></span><br><span class="line">                <span class="comment">/*</span></span><br><span class="line"><span class="comment">                虽然modCount != expectedModCount, 但是调用Iterator的hasNext方法: 返回false,</span></span><br><span class="line"><span class="comment">                不再调用next方法, 即没有校验modCount与expectedModCount是否相等, 此时也就不会抛出异常</span></span><br><span class="line"><span class="comment">                */</span></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">/*不抛出并发修改异常*/</span></span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; arrayList.size(); i++) &#123;</span><br><span class="line">                arrayList.remove(i);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;CopyOnWriteArrayList: &quot;</span> + copyOnWriteArrayList);</span><br><span class="line">            System.out.println(<span class="string">&quot;ArrayList: &quot;</span> + arrayList);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a target="_blank" rel="noopener" href="https://redspider.gitbook.io/concurrent/di-san-pian-jdk-gong-ju-pian/16">CopyOnWrite</a></p>
-
+<li>并发场景下，进行写操作加锁， 进行读操作不加锁，读写分离
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2022/03/26/JUC-CopyOnWriteArrayList/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -835,6 +822,7 @@
   
 
   
+
 
 </body>
 </html>
