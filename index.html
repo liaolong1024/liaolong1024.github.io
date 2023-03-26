@@ -193,7 +193,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-03-26 21:46:51 / 修改时间：21:47:23" itemprop="dateCreated datePublished" datetime="2023-03-26T21:46:51+08:00">2023-03-26</time>
+              <time title="创建时间：2023-03-26 21:46:51 / 修改时间：21:48:57" itemprop="dateCreated datePublished" datetime="2023-03-26T21:46:51+08:00">2023-03-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -216,7 +216,8 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="策略设计模式"><a href="#策略设计模式" class="headerlink" title="策略设计模式"></a>策略设计模式</h1><blockquote>
+          <span id="more"></span>
+<h1 id="策略设计模式"><a href="#策略设计模式" class="headerlink" title="策略设计模式"></a>策略设计模式</h1><blockquote>
 <p>找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起</p>
 </blockquote>
 <p>鸭子的行为可能各不相同（这就是可能需要变化的部分），如果让所有鸭子都实现一个行为接口，让行为各自不同，这是针对实现编程，依赖于实现，代码不能复用</p>
@@ -302,7 +303,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-03-26 21:32:44 / 修改时间：21:44:39" itemprop="dateCreated datePublished" datetime="2023-03-26T21:32:44+08:00">2023-03-26</time>
+              <time title="创建时间：2023-03-26 21:32:44 / 修改时间：21:48:51" itemprop="dateCreated datePublished" datetime="2023-03-26T21:32:44+08:00">2023-03-26</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -325,18 +326,49 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a>模板方法设计模式</h1><h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><p><a target="_blank" rel="noopener" href="https://github.com/liaolong1024/design-pattern/tree/main/src/com/java/template">模板方法设计模式</a></p>
+          <span id="more"></span>
+<h1 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a>模板方法设计模式</h1><h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><p><a target="_blank" rel="noopener" href="https://github.com/liaolong1024/design-pattern/tree/main/src/com/java/template">模板方法设计模式</a></p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
 <p>在一个方法中定义一个算法的骨架，而将某些步骤延迟到子类中实现。即子类在不改变既有步骤的前提下，重新定义算法中的某些步骤</p>
 </blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/26/%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+<h2 id="哪个方法是模板方法？"><a href="#哪个方法是模板方法？" class="headerlink" title="哪个方法是模板方法？"></a>哪个方法是模板方法？</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Drink</span> &#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">void</span> <span class="title function_">prepareRecipe</span><span class="params">()</span> &#123;</span><br><span class="line">        boilWater();</span><br><span class="line">        dealWithWater();</span><br><span class="line">        pourInCup();</span><br><span class="line">        addRecipe();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="模板方法的作用是什么"><a href="#模板方法的作用是什么" class="headerlink" title="模板方法的作用是什么"></a>模板方法的作用是什么</h2><blockquote>
+<p>模板方法定义了一个算法的步骤，并允许子类为一个或多个步骤提供实现</p>
+</blockquote>
+<h2 id="对模板方法挂钩"><a href="#对模板方法挂钩" class="headerlink" title="对模板方法挂钩"></a>对模板方法挂钩</h2><p><a target="_blank" rel="noopener" href="https://github.com/liaolong1024/design-pattern/tree/main/src/com/java/template/hook/DrinkWithHook.java">带有钩子的模板方法抽象类</a></p>
+<h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><ul>
+<li>子类必须提供算法中的某个步骤方法的实现时，该方法就声明为抽象方法</li>
+<li>钩子的作用<ul>
+<li>子类可以选择是否执行算法中可选的步骤方法</li>
+<li>子类可以选择在某个步骤方法执行前或之后利用钩子做些事情</li>
+</ul>
+</li>
+<li>算法的步骤不能切割得太细，这样可能会导致子类需要实现的方法会比较多；也不能太少，这样的设计比较没有弹性</li>
+</ul>
+<h2 id="模板方法优缺点"><a href="#模板方法优缺点" class="headerlink" title="模板方法优缺点"></a>模板方法优缺点</h2><p>优点</p>
+<ul>
+<li>在父类中提取了公共部分的代码，便于代码复用和扩展</li>
+<li>部分方法是由子类实现的，子类可以通过扩展方式增加相应的功能，符合开闭原则</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>每个不同的实现都需要定义一个子类，导致类的个数增加，系统变复杂不易理解</li>
+<li>父类中的抽象方法由子类实现，子类执行结果会影响父类的结果，增加代码理解难度</li>
+</ul>
+<h2 id="Java-API中的模板方法设计模式"><a href="#Java-API中的模板方法设计模式" class="headerlink" title="Java API中的模板方法设计模式"></a>Java API中的模板方法设计模式</h2><h3 id="java-util-Arrays"><a href="#java-util-Arrays" class="headerlink" title="java.util.Arrays"></a>java.util.Arrays</h3><p><code>Arrays.sort</code>所调用的排序算法涉及到多个算法步骤，为了使得<code>sort</code>方法能够适配各种类型的数据对象的排序，将算法步骤中”比较大小”的步骤交由对象自行实现，即实现<code>Comparable</code>接口的<code>compareTo</code>方法</p>
+<h3 id="java-io-InputStream"><a href="#java-io-InputStream" class="headerlink" title="java.io.InputStream"></a>java.io.InputStream</h3><p>该抽象类的<code>read(byte b[], int off, int len)</code>就是一个模板方法，该方法中调用了一个<code>read()</code>方法，该<code>read()</code>由其子类提供具体实现</p>
+<h2 id="Spring-Security中的模板方法设计模式"><a href="#Spring-Security中的模板方法设计模式" class="headerlink" title="Spring Security中的模板方法设计模式"></a>Spring Security中的模板方法设计模式</h2><h3 id="AbstractUserDetailsAuthenticationProvider"><a href="#AbstractUserDetailsAuthenticationProvider" class="headerlink" title="AbstractUserDetailsAuthenticationProvider"></a>AbstractUserDetailsAuthenticationProvider</h3><p>该类中的模板方法是<code>authenticate</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> Authentication <span class="title function_">authenticate</span><span class="params">(Authentication authentication)</span> <span class="keyword">throws</span> AuthenticationException &#123;</span><br><span class="line">    <span class="comment">// 其他步骤...</span></span><br><span class="line">    user = retrieveUser(username, (UsernamePasswordAuthenticationToken) authentication);</span><br><span class="line">    <span class="comment">// 其他步骤...</span></span><br><span class="line">    additionalAuthenticationChecks(user, (UsernamePasswordAuthenticationToken) authentication);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>上面调用的两个方法是是抽象方法，需要子类实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 子类实现该方法，自定义用户认证校验逻辑，如验证码，用户是否过期等</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">additionalAuthenticationChecks</span><span class="params">(UserDetails userDetails,</span></span><br><span class="line"><span class="params">			UsernamePasswordAuthenticationToken authentication)</span> <span class="keyword">throws</span> AuthenticationException;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 子类实现该方法，定义查找用户数据的逻辑，比如指定从数据库中获取用户信息</span></span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">abstract</span> UserDetails <span class="title function_">retrieveUser</span><span class="params">(String username, UsernamePasswordAuthenticationToken authentication)</span></span><br><span class="line">			<span class="keyword">throws</span> AuthenticationException;</span><br></pre></td></tr></table></figure>
+<p>AbstractUserDetailsAuthenticationProvider中也有其他方法供子类选择性实现，如<code>createSuccessAuthentication</code></p>
+<p>如果你的数据源来自其他地方，或者登录凭证不是密码，那么自定义类继承自 AbstractUserDetailsAuthenticationProvider 并重写它里边的这两个方法即可</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li>《Head First 设计模式》</li>
+<li><a target="_blank" rel="noopener" href="http://www.javaboy.org/2020/0730/springsecurity-pattern.html">盘点 Spring Security 框架中的八大经典设计模式</a></li>
+</ul>
+
       
     </div>
 
