@@ -20,30 +20,33 @@
     var CONFIG = {"hostname":"liaolong1024.github.io","root":"/","scheme":"Mist","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"manual","top_n_per_article":1,"unescape":true,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="八九点钟的太阳">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Coder">
-<meta property="og:url" content="https://liaolong1024.github.io/index.html">
+  <meta name="description" content="策略设计模式 找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起  鸭子的行为可能各不相同（这就是可能需要变化的部分），如果让所有鸭子都实现一个行为接口，让行为各自不同，这是针对实现编程，依赖于实现，代码不能复用  针对接口编程，而不是针对实现编程  这里的接口是广义的接口，即包含接口和抽象类，现在我们还是需要一个行为接口，但是不由鸭子子类来实现该接口，而是编写一个实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="策略设计模式">
+<meta property="og:url" content="https://liaolong1024.github.io/2023/03/26/%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/index.html">
 <meta property="og:site_name" content="Coder">
-<meta property="og:description" content="八九点钟的太阳">
+<meta property="og:description" content="策略设计模式 找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起  鸭子的行为可能各不相同（这就是可能需要变化的部分），如果让所有鸭子都实现一个行为接口，让行为各自不同，这是针对实现编程，依赖于实现，代码不能复用  针对接口编程，而不是针对实现编程  这里的接口是广义的接口，即包含接口和抽象类，现在我们还是需要一个行为接口，但是不由鸭子子类来实现该接口，而是编写一个实现">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-26T13:46:51.000Z">
+<meta property="article:modified_time" content="2023-03-26T13:47:23.922Z">
 <meta property="article:author" content="Liao Long">
+<meta property="article:tag" content="设计模式">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://liaolong1024.github.io/">
+<link rel="canonical" href="https://liaolong1024.github.io/2023/03/26/%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Coder</title>
+  <title>策略设计模式 | Coder</title>
   
 
 
@@ -162,9 +165,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -180,10 +184,9 @@
       <meta itemprop="name" content="Coder">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/03/26/%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">策略设计模式</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          策略设计模式
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -216,7 +219,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="策略设计模式"><a href="#策略设计模式" class="headerlink" title="策略设计模式"></a>策略设计模式</h1><blockquote>
+        <h1 id="策略设计模式"><a href="#策略设计模式" class="headerlink" title="策略设计模式"></a>策略设计模式</h1><blockquote>
 <p>找出应用中可能需要变化之处，把它们独立出来，不要和那些不需要变化的代码混在一起</p>
 </blockquote>
 <p>鸭子的行为可能各不相同（这就是可能需要变化的部分），如果让所有鸭子都实现一个行为接口，让行为各自不同，这是针对实现编程，依赖于实现，代码不能复用</p>
@@ -259,173 +262,41 @@
 <li><a target="_blank" rel="noopener" href="http://www.javaboy.org/2020/0730/springsecurity-pattern.html">盘点 Spring Security 框架中的八大经典设计模式</a></li>
 </ul>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liaolong1024.github.io/2023/03/26/%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Liao Long">
-      <meta itemprop="description" content="八九点钟的太阳">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/03/26/%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">模板设计模式</a>
-        </h2>
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="tag"><i class="fa fa-tag"></i> 设计模式</a>
+          </div>
 
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-03-26 21:32:44 / 修改时间：21:44:39" itemprop="dateCreated datePublished" datetime="2023-03-26T21:32:44+08:00">2023-03-26</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/categories/" itemprop="url" rel="index"><span itemprop="name">categories</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="模板方法设计模式"><a href="#模板方法设计模式" class="headerlink" title="模板方法设计模式"></a>模板方法设计模式</h1><h2 id="相关代码"><a href="#相关代码" class="headerlink" title="相关代码"></a>相关代码</h2><p><a target="_blank" rel="noopener" href="https://github.com/liaolong1024/design-pattern/tree/main/src/com/java/template">模板方法设计模式</a></p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><blockquote>
-<p>在一个方法中定义一个算法的骨架，而将某些步骤延迟到子类中实现。即子类在不改变既有步骤的前提下，重新定义算法中的某些步骤</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/03/26/%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
         
-      
-    </div>
 
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/03/26/%E6%A8%A1%E6%9D%BF%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" rel="prev" title="模板设计模式">
+      <i class="fa fa-chevron-left"></i> 模板设计模式
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://liaolong1024.github.io/2022/11/06/%E5%9F%BA%E4%BA%8Egithub%20pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Liao Long">
-      <meta itemprop="description" content="八九点钟的太阳">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coder">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/06/%E5%9F%BA%E4%BA%8Egithub%20pages%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2/" class="post-title-link" itemprop="url">博客搭建参考教程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-11-06 00:15:10 / 修改时间：00:20:47" itemprop="dateCreated datePublished" datetime="2022-11-06T00:15:10+08:00">2022-11-06</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E5%85%B6%E4%BB%96/" itemprop="url" rel="index"><span itemprop="name">其他</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a target="_blank" rel="noopener" href="https://yushuaigee.gitee.io/2020/12/31/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%85%8D%E8%B4%B9%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2(%E4%B8%80)%E2%80%94%E2%80%94%E6%9C%AC%E5%9C%B0%E6%90%AD%E5%BB%BAhexo%E6%A1%86%E6%9E%B6/">本博客搭建参考教程</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
   
 
 
 
           </div>
           
+    <div class="comments" id="gitalk-container"></div>
 
 <script>
   window.addEventListener('tabs:register', () => {
@@ -472,6 +343,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AD%96%E7%95%A5%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">策略设计模式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">1.2.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">1.3.</span> <span class="nav-text">缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spring-Security%E4%B8%AD%E7%9A%84%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.4.</span> <span class="nav-text">Spring Security中的策略模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%A8%E6%88%B7%E7%99%BB%E5%BD%95%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E7%AD%96%E7%95%A5"><span class="nav-number">1.4.1.</span> <span class="nav-text">用户登录信息存储策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session%E5%B9%B6%E5%8F%91%E7%AE%A1%E7%90%86"><span class="nav-number">1.4.2.</span> <span class="nav-text">Session并发管理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">1.5.</span> <span class="nav-text">参考</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -595,6 +467,25 @@
 
   
 
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.css">
+
+<script>
+NexT.utils.loadComments(document.querySelector('#gitalk-container'), () => {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js', () => {
+    var gitalk = new Gitalk({
+      clientID    : '2962806c7d8816d328fc',
+      clientSecret: '8988fccb74fae97853d9758bdb0efd97e818596c',
+      repo        : 'coderliaolong.github.io',
+      owner       : 'coderliaolong',
+      admin       : ['coderliaolong'],
+      id          : '55ea5cbd042cc530e16505d39d6deb25',
+        language: '',
+      distractionFreeMode: true
+    });
+    gitalk.render('gitalk-container');
+  }, window.Gitalk);
+});
+</script>
 
 </body>
 </html>
